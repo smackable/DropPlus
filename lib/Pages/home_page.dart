@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:prjct/Pages/home_screen.dart';
@@ -63,9 +65,21 @@ class HomePageState extends State<HomePage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Name : " + _user_info_list[index][0]),
-                            Text("Water Quantity : " +
-                                _user_info_list[index][1].toString())
+                            Text(
+                              "Name : " + _user_info_list[index][0],
+                              style: TextStyle(
+                                fontFamily: 'Raleway',
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "Water Quantity : " +
+                                  _user_info_list[index][1].toString(),
+                              style: TextStyle(
+                                fontFamily: 'Raleway',
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                         ),
                       ),
