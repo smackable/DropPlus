@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "340232288294",
+    "firebase_url": "https://auto-water-management.firebaseio.com",
+    "project_id": "auto-water-management",
+    "storage_bucket": "auto-water-management.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340232288294:android:88da241d54cc97aee38ee7",
+        "android_client_info": {
+          "package_name": "com.example.prjct"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340232288294-tkmvtb0krvkuambuaud841e35om94mam.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWZzfYY_-2o854F4YHzYo3xTfEiaQ8l8E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340232288294-tkmvtb0krvkuambuaud841e35om94mam.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
