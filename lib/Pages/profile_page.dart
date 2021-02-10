@@ -7,6 +7,7 @@ class ProfilePage extends StatefulWidget {
   _ProfilePageState createState() => _ProfilePageState();
 }
 
+// Git check
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
