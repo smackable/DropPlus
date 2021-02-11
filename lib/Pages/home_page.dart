@@ -42,6 +42,7 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text("Home"),
       ),
@@ -53,7 +54,8 @@ class HomePageState extends State<HomePage> {
                 "] : " +
                 _user_info_list.toString());
             return Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(
+                  left: 20.0, right: 20.0, bottom: 4.0, top: 4.0),
               child: Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -65,20 +67,26 @@ class HomePageState extends State<HomePage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Name : " + _user_info_list[index][0],
-                              style: TextStyle(
-                                fontFamily: 'Raleway',
-                                fontWeight: FontWeight.bold,
+                            Container(
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Text(
+                                  "Name : " + _user_info_list[index][0],
+                                  style: TextStyle(
+                                    fontFamily: 'Raleway',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.0,
+                                  ),
+                                ),
                               ),
                             ),
                             Text(
                               "Water Quantity : " +
                                   _user_info_list[index][1].toString(),
                               style: TextStyle(
-                                fontFamily: 'Raleway',
-                                fontWeight: FontWeight.bold,
-                              ),
+                                  fontFamily: 'Raleway',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.0),
                             ),
                           ],
                         ),
