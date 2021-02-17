@@ -47,42 +47,60 @@ class HomePageState extends State<HomePage> {
         title: Text("Home"),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: List<Widget>.generate(_user_info_list.length, (index) {
-            print("_user_info_list[" +
-                index.toString() +
-                "] : " +
-                _user_info_list.toString());
-            return Padding(
-              padding: const EdgeInsets.only(
-                  left: 20.0, right: 20.0, bottom: 4.0, top: 4.0),
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Card(
-                      elevation: 2.5,
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
+        child: originalTemplate(user_info_list: _user_info_list),
+      ),
+    );
+  }
+}
+
+class originalTemplate extends StatelessWidget {
+  const originalTemplate({
+    Key key,
+    @required List<List> user_info_list,
+  })  : _user_info_list = user_info_list,
+        super(key: key);
+
+  final List<List> _user_info_list;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: List<Widget>.generate(_user_info_list.length, (index) {
+        print("_user_info_list[" +
+            index.toString() +
+            "] : " +
+            _user_info_list.toString());
+        return Padding(
+          padding: const EdgeInsets.only(
+              left: 20.0, right: 20.0, bottom: 4.0, top: 4.0),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Card(
+                  elevation: 2.5,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      children: [
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Text(
-                                  "Name : " + _user_info_list[index][0],
-                                  style: TextStyle(
-                                    fontFamily: 'Raleway',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18.0,
-                                  ),
+                            Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text(
+                                "Name : " + _user_info_list[index][0],
+                                style: TextStyle(
+                                  fontFamily: 'Raleway',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.0,
                                 ),
                               ),
                             ),
                             Text(
                               "Water Quantity : " +
-                                  _user_info_list[index][1].toString(),
+                                  _user_info_list[index][1].toString() +
+                                  " ml",
                               style: TextStyle(
                                   fontFamily: 'Raleway',
                                   fontWeight: FontWeight.bold,
@@ -90,15 +108,24 @@ class HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
-                      ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 75.0),
+                          child: IconButton(
+                              icon: Icon(
+                                Icons.edit,
+                                color: Colors.teal,
+                              ),
+                              onPressed: null),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            );
-          }),
-        ),
-      ),
+              ],
+            ),
+          ),
+        );
+      }),
     );
   }
 }

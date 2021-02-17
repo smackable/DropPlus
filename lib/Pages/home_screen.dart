@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icons.add,
                   color: _selectedIndex == 0 ? Colors.blue : Colors.grey,
                 ),
-                label: "Add page"),
+                label: "Add "),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,
