@@ -72,15 +72,18 @@ class originalTemplate extends StatelessWidget {
             _user_info_list.toString());
         return Padding(
           padding: const EdgeInsets.only(
-              left: 20.0, right: 20.0, bottom: 4.0, top: 4.0),
+              left: 10.0, right: 10.0, bottom: 4.0, top: 4.0),
           child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   elevation: 2.5,
                   child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Row(
                       children: [
                         Column(
