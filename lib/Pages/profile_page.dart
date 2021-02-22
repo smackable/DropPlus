@@ -18,15 +18,39 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       body: Padding(
         padding: EdgeInsets.only(top: 5.0, right: 5, left: 5, bottom: 400),
-        child: Container(
-          width: 900,
-          height: 900,
-          child: Card(
-            elevation: 2.5,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Card(
+              elevation: 2.5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 80.0, top: 4),
+                child: Column(
+                  children: [
+                    Card(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: 2,
+                          bottom: 2,
+                          right: 120,
+                          left: 120,
+                        ),
+                        child: Text("Name"),
+                      ),
+                      elevation: 2.5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
+            Card(child: Padding(padding: EdgeInsets.all(8)))
+          ],
         ),
       ),
     );
