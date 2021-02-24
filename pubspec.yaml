@@ -71,6 +71,9 @@ flutter:
         - asset: fonts\Raleway-Italic-VariableFont_wght.ttf
         - asset: fonts\Raleway-VariableFont_wght.ttf
           style: italic
+    - family : YanoneKaffeesatz  
+      fonts:
+        - asset: fonts\yanoneKaffeesatz-variableFont_wght.ttf   
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

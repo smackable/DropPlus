@@ -24,6 +24,7 @@ class _ProfilePageState extends State<ProfilePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Card(
+                //Main Card
                 elevation: 2.5,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -33,6 +34,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Column(
                     children: [
                       Card(
+                        //Name Card
                         child: Padding(
                           padding: EdgeInsets.only(
                             top: 2,
@@ -56,15 +58,16 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ),
                       Card(
+                        //Water used Card
                         child: Padding(
                           padding: EdgeInsets.only(
                             top: 2,
                             bottom: 2,
-                            right: 250,
+                            right: 220,
                             left: 10,
                           ),
                           child: Text(
-                            "Text :",
+                            "Water Used:",
                             style: TextStyle(
                               fontFamily: 'Raleway',
                               fontWeight: FontWeight.bold,
@@ -78,6 +81,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ),
                       Container(
+                        //Edit Button
                         alignment: Alignment.centerRight,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 20.0, top: 4),
@@ -98,6 +102,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Container(
                 height: 460,
                 child: Card(
+                  //Water Guage CArd
                   elevation: 2.5,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -106,17 +111,49 @@ class _ProfilePageState extends State<ProfilePage> {
                     padding: EdgeInsets.all(8),
                     child: Column(
                       children: [
-                        FlutterGauge(
-                            handSize: 25,
-                            index: 40.0,
-                            end: 100,
-                            number: Number.endAndCenterAndStart,
-                            circleColor: Color(0xFF47505F),
-                            secondsMarker: SecondsMarker.secondsAndMinute,
-                            counterStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                            )),
+                        Row(
+                          children: [
+                            Column(
+                              children: [
+                                FlutterGauge(
+                                    //Guage 1
+                                    secondsMarker: SecondsMarker.none,
+                                    hand: Hand.short,
+                                    number: Number.none,
+                                    index: 66.0,
+                                    circleColor: Colors.blue,
+                                    counterStyle: TextStyle(
+                                        fontFamily: 'YanoneKaffeesatz',
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                        fontSize: 25),
+                                    counterAlign: CounterAlign.center,
+                                    isDecimal: false),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 35.0),
+                              child: FlutterGauge(
+                                  // Guage 2
+                                  secondsMarker: SecondsMarker.none,
+                                  hand: Hand.short,
+                                  number: Number.none,
+                                  index: 66.0,
+                                  circleColor: Colors.blue,
+                                  counterStyle: TextStyle(
+                                      fontFamily: 'YanoneKaffeesatz',
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                      fontSize: 25),
+                                  counterAlign: CounterAlign.center,
+                                  isDecimal: false),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
