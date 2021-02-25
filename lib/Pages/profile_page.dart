@@ -120,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     secondsMarker: SecondsMarker.none,
                                     hand: Hand.short,
                                     number: Number.none,
-                                    index: 66.0,
+                                    index: 40,
                                     circleColor: Colors.blue,
                                     counterStyle: TextStyle(
                                         fontFamily: 'YanoneKaffeesatz',
@@ -131,6 +131,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                     isDecimal: false),
                               ],
                             ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child: Column(
+                                  children: [Text('data')],
+                                ),
+                              ),
+                            )
                           ],
                         ),
                         Row(
@@ -142,7 +150,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   secondsMarker: SecondsMarker.none,
                                   hand: Hand.short,
                                   number: Number.none,
-                                  index: 66.0,
+                                  index: 78.0,
                                   circleColor: Colors.blue,
                                   counterStyle: TextStyle(
                                       fontFamily: 'YanoneKaffeesatz',
