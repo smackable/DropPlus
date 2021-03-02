@@ -129,14 +129,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                         fontSize: 25),
                                     counterAlign: CounterAlign.center,
                                     isDecimal: false),
+                                Container(child: Text('test')),
                               ],
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
-                                child: Column(
-                                  children: [Text('data')],
-                                ),
+                                child: Text('data'),
                               ),
                             )
                           ],
