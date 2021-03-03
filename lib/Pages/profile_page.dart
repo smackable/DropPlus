@@ -35,22 +35,22 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       Card(
                         //Name Card
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            top: 2,
-                            bottom: 2,
-                            right: 250,
-                            left: 10,
-                          ),
-                          child: Text(
-                            "Name :",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontFamily: 'Raleway',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18.0,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 4, bottom: 4, left: 8, right: 8),
+                              child: Text(
+                                "Name : ",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontFamily: 'Raleway',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.0,
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                         elevation: 2.5,
                         shape: RoundedRectangleBorder(
@@ -59,21 +59,21 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Card(
                         //Water used Card
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            top: 2,
-                            bottom: 2,
-                            right: 220,
-                            left: 10,
-                          ),
-                          child: Text(
-                            "Water Used:",
-                            style: TextStyle(
-                              fontFamily: 'Raleway',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18.0,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 2, bottom: 2, left: 8, right: 8),
+                              child: Text(
+                                "Water Required : ",
+                                style: TextStyle(
+                                  fontFamily: 'Raleway',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.0,
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                         elevation: 2.5,
                         shape: RoundedRectangleBorder(
@@ -89,7 +89,47 @@ class _ProfilePageState extends State<ProfilePage> {
                             width: 80,
                             height: 25,
                             child: RaisedButton(
-                              onPressed: () => {},
+                              onPressed: () => {
+                                showDialog(
+                                    context: context,
+                                    barrierDismissible: false,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        scrollable: true,
+                                        title: Text('Edit'),
+                                        content: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Form(
+                                            child: Column(
+                                              children: <Widget>[
+                                                TextFormField(
+                                                  decoration: InputDecoration(
+                                                    labelText: 'Name',
+                                                    icon:
+                                                        Icon(Icons.account_box),
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  decoration: InputDecoration(
+                                                    labelText: 'Water Required',
+                                                    icon: Icon(
+                                                      Icons
+                                                          .water_damage_outlined,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        actions: [
+                                          RaisedButton(
+                                              child: Text("Submit"),
+                                              onPressed: () {})
+                                        ],
+                                      );
+                                    }),
+                              },
                               child: Text('Edit'),
                             ),
                           ),
@@ -129,15 +169,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                         fontSize: 25),
                                     counterAlign: CounterAlign.center,
                                     isDecimal: false),
-                                Container(child: Text('test')),
+                                Container(
+                                  child: Text('test'),
+                                ),
                               ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                child: Text('data'),
-                              ),
-                            )
                           ],
                         ),
                         Row(
