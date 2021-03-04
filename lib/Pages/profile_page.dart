@@ -140,7 +140,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               Container(
-                height: 460,
                 child: Card(
                   //Water Guage CArd
                   elevation: 2.5,
@@ -155,6 +154,13 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             Column(
                               children: [
+                                Text(
+                                  'Water in tank :',
+                                  style: TextStyle(
+                                      fontFamily: 'raleway',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                                ),
                                 FlutterGauge(
                                     //Guage 1
                                     secondsMarker: SecondsMarker.none,
@@ -169,31 +175,38 @@ class _ProfilePageState extends State<ProfilePage> {
                                         fontSize: 25),
                                     counterAlign: CounterAlign.center,
                                     isDecimal: false),
-                                Container(
-                                  child: Text('test'),
-                                ),
                               ],
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 35.0),
-                              child: FlutterGauge(
-                                  // Guage 2
-                                  secondsMarker: SecondsMarker.none,
-                                  hand: Hand.short,
-                                  number: Number.none,
-                                  index: 78.0,
-                                  circleColor: Colors.blue,
-                                  counterStyle: TextStyle(
-                                      fontFamily: 'YanoneKaffeesatz',
+                            Column(
+                              children: [
+                                Text(
+                                  'Water used :',
+                                  style: TextStyle(
+                                      fontFamily: 'raleway',
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black,
-                                      fontSize: 25),
-                                  counterAlign: CounterAlign.center,
-                                  isDecimal: false),
+                                      fontSize: 15),
+                                ),
+                                FlutterGauge(
+                                    // Guage 2
+                                    secondsMarker: SecondsMarker.none,
+                                    hand: Hand.short,
+                                    number: Number.none,
+                                    index: 78.0,
+                                    circleColor: Colors.blue,
+                                    counterStyle: TextStyle(
+                                        fontFamily: 'YanoneKaffeesatz',
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                        fontSize: 25),
+                                    counterAlign: CounterAlign.center,
+                                    isDecimal: false),
+                                RaisedButton(
+                                    child: Text("Submit"), onPressed: () {})
+                              ],
                             ),
                           ],
                         ),
