@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gauge/flutter_gauge.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key key}) : super(key: key);
@@ -10,6 +11,8 @@ class ProfilePage extends StatefulWidget {
 
 // Git check
 class _ProfilePageState extends State<ProfilePage> {
+  final databaseReference = FirebaseDatabase.instance.reference();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -195,7 +198,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     secondsMarker: SecondsMarker.none,
                                     hand: Hand.short,
                                     number: Number.none,
-                                    index: 78.0,
+                                    index: 80.0,
                                     circleColor: Colors.blue,
                                     counterStyle: TextStyle(
                                         fontFamily: 'YanoneKaffeesatz',
@@ -205,7 +208,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     counterAlign: CounterAlign.center,
                                     isDecimal: false),
                                 RaisedButton(
-                                    child: Text("Submit"), onPressed: () {})
+                                    child: Text("Reset"), onPressed: () {})
                               ],
                             ),
                           ],

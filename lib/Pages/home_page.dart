@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:prjct/Pages/home_screen.dart';
+import 'package:prjct/Pages/profile_page.dart';
 
 class HomePage extends StatefulWidget {
   final UserInfo userInfo;
@@ -114,11 +115,20 @@ class originalTemplate extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 75.0),
                           child: IconButton(
-                              icon: Icon(
-                                Icons.edit,
-                                color: Colors.teal,
-                              ),
-                              onPressed: null),
+                            icon: Icon(
+                              Icons.edit,
+                              color: Colors.teal,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      ProfilePage(),
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       ],
                     ),
