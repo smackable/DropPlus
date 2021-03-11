@@ -12,9 +12,20 @@ class ProfilePage extends StatefulWidget {
 // Git check
 class _ProfilePageState extends State<ProfilePage> {
   final databaseReference = FirebaseDatabase.instance.reference();
+  double wtrfln;
 
   @override
   Widget build(BuildContext context) {
+    databaseReference
+        .child("z2Ix9odfi5RyMWTpn6KvLUEhSy82")
+        .once()
+        .then((DataSnapshot snapshot) {
+      var val = snapshot.value;
+      print("Snapshot value ${val["profile A"]["Water flown"]}");
+      wtrfln = val["profile A"]["Water flown"];
+      print("Water flown : $wtrfln");
+    });
+    print("Water flown : $wtrfln");
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
@@ -91,7 +102,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: SizedBox(
                             width: 80,
                             height: 25,
-                            child: RaisedButton(
+                            child: ElevatedButton(
                               onPressed: () => {
                                 showDialog(
                                     context: context,
@@ -126,7 +137,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           ),
                                         ),
                                         actions: [
-                                          RaisedButton(
+                                          ElevatedButton(
                                               child: Text("Submit"),
                                               onPressed: () {})
                                         ],
@@ -169,7 +180,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     secondsMarker: SecondsMarker.none,
                                     hand: Hand.short,
                                     number: Number.none,
-                                    index: 40,
+                                    index: 78,
                                     circleColor: Colors.blue,
                                     counterStyle: TextStyle(
                                         fontFamily: 'YanoneKaffeesatz',
@@ -198,7 +209,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     secondsMarker: SecondsMarker.none,
                                     hand: Hand.short,
                                     number: Number.none,
-                                    index: 80.0,
+                                    index: wtrfln,
                                     circleColor: Colors.blue,
                                     counterStyle: TextStyle(
                                         fontFamily: 'YanoneKaffeesatz',
@@ -207,7 +218,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         fontSize: 25),
                                     counterAlign: CounterAlign.center,
                                     isDecimal: false),
-                                RaisedButton(
+                                ElevatedButton(
                                     child: Text("Reset"), onPressed: () {})
                               ],
                             ),

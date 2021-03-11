@@ -94,14 +94,14 @@ class _AddPageState extends State<AddPage> {
                 SizedBox(
                   height: 100,
                 ),
-                RaisedButton(
+                ElevatedButton(
                   child: Text(
                     "Submit",
                     style: TextStyle(color: Colors.teal, fontSize: 20),
                   ),
                   onPressed: () {
                     var _userInfo = new UserInfoModel(_name, _waterQuantity);
-                    Scaffold.of(context).showSnackBar(SnackBar(
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text("Submitted successfully"),
                     ));
                   },
