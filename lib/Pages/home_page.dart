@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:prjct/Pages/home_screen.dart';
-import 'package:prjct/Pages/profile_page.dart';
 
 class HomePage extends StatefulWidget {
   final UserInfo userInfo;
@@ -120,13 +119,7 @@ class originalTemplate extends StatelessWidget {
                               color: Colors.teal,
                             ),
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      ProfilePage(),
-                                ),
-                              );
+                              HomeScreen().onPageChange(2);
                             },
                           ),
                         ),

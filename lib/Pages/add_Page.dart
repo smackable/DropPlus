@@ -97,13 +97,20 @@ class _AddPageState extends State<AddPage> {
                 ElevatedButton(
                   child: Text(
                     "Submit",
-                    style: TextStyle(color: Colors.teal, fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
                     var _userInfo = new UserInfoModel(_name, _waterQuantity);
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text("Submitted successfully"),
-                    ));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Submitted successfully"),
+                      ),
+                    );
+                    style:
+                    ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.red),
+                    );
                   },
                 ),
               ],

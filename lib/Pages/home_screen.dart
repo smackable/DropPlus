@@ -6,6 +6,7 @@ import 'profile_page.dart';
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
 
+  onPageChange(int index) => createState()._switchPage(index);
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -18,6 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
   void _onPageChanged(int index) {
     setState(() {
       _selectedIndex = index;
+    });
+  }
+
+  void _switchPage(int index) {
+    setState(() {
+      _pageController.jumpToPage(index);
     });
   }
 

@@ -13,6 +13,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final databaseReference = FirebaseDatabase.instance.reference();
   double wtrfln;
+  double intank;
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +21,21 @@ class _ProfilePageState extends State<ProfilePage> {
         .child("z2Ix9odfi5RyMWTpn6KvLUEhSy82")
         .once()
         .then((DataSnapshot snapshot) {
+      setState(() {
+        wtrfln = snapshot.value['Water flown'];
+      });
+
       var val = snapshot.value;
-      print("Snapshot value ${val["profile A"]["Water flown"]}");
       wtrfln = val["profile A"]["Water flown"];
       print("Water flown : $wtrfln");
+
+      intank = val["profile A"]["tank Capacity"];
+      print(" In tank : $intank");
     });
+
     print("Water flown : $wtrfln");
+    print("In tank : $intank");
+
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
@@ -180,7 +190,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     secondsMarker: SecondsMarker.none,
                                     hand: Hand.short,
                                     number: Number.none,
-                                    index: 78,
+                                    index: intank,
                                     circleColor: Colors.blue,
                                     counterStyle: TextStyle(
                                         fontFamily: 'YanoneKaffeesatz',
