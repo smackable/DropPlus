@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'user_info_model.dart';
+import 'package:prjct/Pages/list.dart';
 
 class AddPage extends StatefulWidget {
   AddPage({Key key}) : super(key: key);
@@ -15,6 +15,7 @@ class _AddPageState extends State<AddPage> {
   double _waterQuantity;
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  FocusNode water_quantity = new FocusNode();
 
   Widget _buildName() {
     return TextFormField(
@@ -39,6 +40,7 @@ class _AddPageState extends State<AddPage> {
     return Padding(
       padding: EdgeInsets.only(top: 20),
       child: TextFormField(
+          focusNode: water_quantity,
           decoration: InputDecoration(
             labelText: "Water Required",
             labelStyle: TextStyle(fontSize: 20),
@@ -100,7 +102,9 @@ class _AddPageState extends State<AddPage> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
-                    var _userInfo = new UserInfoModel(_name, _waterQuantity);
+                    water_quantity.unfocus();
+                    var lst = [_name, _waterQuantity];
+                    list.user_info_list.add(lst);
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text("Submitted successfully"),

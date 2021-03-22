@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   PageController _pageController = PageController();
-  List<Widget> _screens = [AddPage(), HomePage(), ProfilePage()];
+  List<Widget> _screens = [AddPage(), HomePage()];
 
   int _selectedIndex = 0;
   void _onPageChanged(int index) {
@@ -57,14 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
               ),
               label: "Home",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.people,
-                color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
-              ),
-              label: "Profile",
-            ),
+            )
           ]),
     );
   }

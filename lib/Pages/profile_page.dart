@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gauge/flutter_gauge.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:prjct/Pages/list.dart';
 import 'user_info_model.dart';
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage({Key key}) : super(key: key);
+  var index = 0;
+  ProfilePage({index, Key key}) : super(key: key) {
+    this.index = index;
+  }
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -22,10 +26,6 @@ class _ProfilePageState extends State<ProfilePage> {
     //     .child("z2Ix9odfi5RyMWTpn6KvLUEhSy82")
     //     .once()
     //     .then((DataSnapshot snapshot) {
-    //   setState(() {
-    //     wtrfln = snapshot.value['Water flown'];
-    //   });
-
     //   var val = snapshot.value;
     //   wtrfln = val["profile A"]["Water flown"];
     //   print("Water flown : $wtrfln");
@@ -33,10 +33,9 @@ class _ProfilePageState extends State<ProfilePage> {
     //   intank = val["profile A"]["tank Capacity"];
     //   print(" In tank : $intank");
     // });
-
-    print("Water flown : $wtrfln");
-    print("In tank : $intank");
-
+    var name = "Name : " + list.user_info_list[widget.index][0];
+    var wtr_required =
+        "Water Required : " + list.user_info_list[widget.index][1].toString();
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
@@ -66,7 +65,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               padding: const EdgeInsets.only(
                                   top: 4, bottom: 4, left: 8, right: 8),
                               child: Text(
-                                "Name : ",
+                                name,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontFamily: 'Raleway',
@@ -90,7 +89,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               padding: const EdgeInsets.only(
                                   top: 2, bottom: 2, left: 8, right: 8),
                               child: Text(
-                                "Water Required : ",
+                                wtr_required,
                                 style: TextStyle(
                                   fontFamily: 'Raleway',
                                   fontWeight: FontWeight.bold,
@@ -173,69 +172,20 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   child: Padding(
                     padding: EdgeInsets.all(8),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                Text(
-                                  'Water in tank :',
-                                  style: TextStyle(
-                                      fontFamily: 'raleway',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15),
-                                ),
-                                FlutterGauge(
-                                    //Guage 1
-                                    secondsMarker: SecondsMarker.none,
-                                    hand: Hand.short,
-                                    number: Number.none,
-                                    index: intank,
-                                    circleColor: Colors.blue,
-                                    counterStyle: TextStyle(
-                                        fontFamily: 'YanoneKaffeesatz',
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                        fontSize: 25),
-                                    counterAlign: CounterAlign.center,
-                                    isDecimal: false),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                Text(
-                                  'Water used :',
-                                  style: TextStyle(
-                                      fontFamily: 'raleway',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15),
-                                ),
-                                FlutterGauge(
-                                    // Guage 2
-                                    secondsMarker: SecondsMarker.none,
-                                    hand: Hand.short,
-                                    number: Number.none,
-                                    index: wtrfln,
-                                    circleColor: Colors.blue,
-                                    counterStyle: TextStyle(
-                                        fontFamily: 'YanoneKaffeesatz',
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                        fontSize: 25),
-                                    counterAlign: CounterAlign.center,
-                                    isDecimal: false),
-                                ElevatedButton(
-                                    child: Text("Reset"), onPressed: () {})
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
+                    child: StreamBuilder(
+                      stream: databaseReference
+                          .child("z2Ix9odfi5RyMWTpn6KvLUEhSy82")
+                          .onChildChanged,
+                      builder: (context, snapshot) {
+                        var val = snapshot;
+                        print("In stream builder $snapshot");
+                        wtrfln = 50.1;
+                        print("Water flown : $wtrfln");
+
+                        intank = 60.1;
+                        print(" In tank : $intank");
+                        return waterGauge(intank, wtrfln);
+                      },
                     ),
                   ),
                 ),
@@ -243,6 +193,74 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  waterGauge(intank_value, wtrfln_value) {
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Column(
+                children: [
+                  Text(
+                    'Water in tank :',
+                    style: TextStyle(
+                        fontFamily: 'raleway',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
+                  ),
+                  FlutterGauge(
+                      //Guage 1
+                      secondsMarker: SecondsMarker.none,
+                      hand: Hand.short,
+                      number: Number.none,
+                      index: intank_value,
+                      circleColor: Colors.blue,
+                      counterStyle: TextStyle(
+                          fontFamily: 'YanoneKaffeesatz',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontSize: 25),
+                      counterAlign: CounterAlign.center,
+                      isDecimal: false),
+                ],
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Column(
+                children: [
+                  Text(
+                    'Water used :',
+                    style: TextStyle(
+                        fontFamily: 'raleway',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
+                  ),
+                  FlutterGauge(
+                      // Guage 2
+                      secondsMarker: SecondsMarker.none,
+                      hand: Hand.short,
+                      number: Number.none,
+                      index: wtrfln_value,
+                      circleColor: Colors.blue,
+                      counterStyle: TextStyle(
+                          fontFamily: 'YanoneKaffeesatz',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontSize: 25),
+                      counterAlign: CounterAlign.center,
+                      isDecimal: false),
+                  ElevatedButton(child: Text("Reset"), onPressed: () {})
+                ],
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
