@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gauge/flutter_gauge.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'user_info_model.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key key}) : super(key: key);
@@ -17,21 +18,21 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    databaseReference
-        .child("z2Ix9odfi5RyMWTpn6KvLUEhSy82")
-        .once()
-        .then((DataSnapshot snapshot) {
-      setState(() {
-        wtrfln = snapshot.value['Water flown'];
-      });
+    // databaseReference
+    //     .child("z2Ix9odfi5RyMWTpn6KvLUEhSy82")
+    //     .once()
+    //     .then((DataSnapshot snapshot) {
+    //   setState(() {
+    //     wtrfln = snapshot.value['Water flown'];
+    //   });
 
-      var val = snapshot.value;
-      wtrfln = val["profile A"]["Water flown"];
-      print("Water flown : $wtrfln");
+    //   var val = snapshot.value;
+    //   wtrfln = val["profile A"]["Water flown"];
+    //   print("Water flown : $wtrfln");
 
-      intank = val["profile A"]["tank Capacity"];
-      print(" In tank : $intank");
-    });
+    //   intank = val["profile A"]["tank Capacity"];
+    //   print(" In tank : $intank");
+    // });
 
     print("Water flown : $wtrfln");
     print("In tank : $intank");
