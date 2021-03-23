@@ -17,8 +17,8 @@ class ProfilePage extends StatefulWidget {
 // Git check
 class _ProfilePageState extends State<ProfilePage> {
   final databaseReference = FirebaseDatabase.instance.reference();
-  double wtrfln;
-  double intank;
+  // double wtrfln;
+  // double intank;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
     //     .child("z2Ix9odfi5RyMWTpn6KvLUEhSy82")
     //     .once()
     //     .then((DataSnapshot snapshot) {
+
     //   var val = snapshot.value;
     //   wtrfln = val["profile A"]["Water flown"];
     //   print("Water flown : $wtrfln");
@@ -173,18 +174,94 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Padding(
                     padding: EdgeInsets.all(8),
                     child: StreamBuilder(
-                      stream: databaseReference
+                      stream: FirebaseDatabase.instance
+                          .reference()
                           .child("z2Ix9odfi5RyMWTpn6KvLUEhSy82")
-                          .onChildChanged,
-                      builder: (context, snapshot) {
-                        var val = snapshot;
-                        print("In stream builder $snapshot");
-                        wtrfln = 50.1;
-                        print("Water flown : $wtrfln");
+                          .onValue,
+                      builder: (context, AsyncSnapshot<Event> snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          print("waiting");
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        } else {
+                          var val = snapshot.data.snapshot.value;
+                          print(
+                              "In stream builder ${snapshot.data.snapshot.value}");
 
-                        intank = 60.1;
-                        print(" In tank : $intank");
-                        return waterGauge(intank, wtrfln);
+                          // return waterGauge(val['profile A']['tank Capacity'],
+                          //     val['profile A']['Water flown']);
+                          return Container(
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Text(
+                                          'Water in tank :',
+                                          style: TextStyle(
+                                              fontFamily: 'raleway',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15),
+                                        ),
+                                        FlutterGauge(
+                                            //Guage 1
+                                            secondsMarker: SecondsMarker.none,
+                                            hand: Hand.short,
+                                            number: Number.none,
+                                            index: val['profile A']
+                                                ['tank Capacity'],
+                                            circleColor: Colors.blue,
+                                            counterStyle: TextStyle(
+                                                fontFamily: 'YanoneKaffeesatz',
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black,
+                                                fontSize: 25),
+                                            counterAlign: CounterAlign.center,
+                                            isDecimal: false),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Text(
+                                          'Water used :',
+                                          style: TextStyle(
+                                              fontFamily: 'raleway',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15),
+                                        ),
+                                        FlutterGauge(
+                                            // Guage 2
+                                            secondsMarker: SecondsMarker.none,
+                                            hand: Hand.short,
+                                            number: Number.none,
+                                            index: val['profile A']
+                                                ['Water flown'],
+                                            circleColor: Colors.blue,
+                                            counterStyle: TextStyle(
+                                                fontFamily: 'YanoneKaffeesatz',
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black,
+                                                fontSize: 25),
+                                            counterAlign: CounterAlign.center,
+                                            isDecimal: false),
+                                        ElevatedButton(
+                                            child: Text("Reset"),
+                                            onPressed: () {})
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        }
                       },
                     ),
                   ),
