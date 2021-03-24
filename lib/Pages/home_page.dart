@@ -21,9 +21,21 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: Text("Home"),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[Colors.lime, Colors.blue])),
+        ),
+        backgroundColor: Colors.lime,
+        title: Text(
+          "Home",
+          style: TextStyle(
+              fontFamily: 'Raleway', fontSize: 25, fontWeight: FontWeight.bold),
+        ),
       ),
       body: SingleChildScrollView(
         child: originalTemplate(user_info_list: list.user_info_list),
@@ -53,6 +65,7 @@ class originalTemplate extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Card(
+                  color: Colors.grey[700],
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -72,6 +85,7 @@ class originalTemplate extends StatelessWidget {
                                   fontFamily: 'Raleway',
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
@@ -82,7 +96,8 @@ class originalTemplate extends StatelessWidget {
                               style: TextStyle(
                                   fontFamily: 'Raleway',
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 18.0),
+                                  fontSize: 18.0,
+                                  color: Colors.white),
                             ),
                           ],
                         ),

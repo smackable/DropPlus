@@ -80,7 +80,9 @@ class _AddPageState extends State<AddPage> {
         title: Text(
           "Add user",
           style: TextStyle(
+            fontFamily: 'Raleway',
             fontSize: 30,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
