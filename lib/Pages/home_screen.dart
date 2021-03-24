@@ -41,20 +41,21 @@ class _HomeScreenState extends State<HomeScreen> {
         onPageChanged: _onPageChanged,
       ),
       bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Colors.teal,
-          unselectedItemColor: Colors.grey,
+          backgroundColor: Colors.blueGrey[600],
+          selectedItemColor: Color(0xffF9AA33),
+          unselectedItemColor: Colors.white,
           onTap: _onItemTapped,
           items: [
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.add,
-                  color: _selectedIndex == 0 ? Colors.blue : Colors.grey,
+                  color: _selectedIndex == 0 ? Color(0xffF9AA33) : Colors.white,
                 ),
                 label: "Add "),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,
-                color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
+                color: _selectedIndex == 1 ? Color(0xffF9AA33) : Colors.white,
               ),
               label: "Home",
             )

@@ -21,20 +21,16 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[Colors.lime, Colors.blue])),
-        ),
-        backgroundColor: Colors.lime,
+        backgroundColor: Colors.blueGrey[600],
         title: Text(
           "Home",
           style: TextStyle(
-              fontFamily: 'Raleway', fontSize: 25, fontWeight: FontWeight.bold),
+              fontFamily: 'Raleway',
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: Colors.white),
         ),
       ),
       body: SingleChildScrollView(
@@ -65,7 +61,7 @@ class originalTemplate extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Card(
-                  color: Colors.grey[700],
+                  color: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -85,7 +81,7 @@ class originalTemplate extends StatelessWidget {
                                   fontFamily: 'Raleway',
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0,
-                                  color: Colors.white,
+                                  color: Colors.grey[850],
                                 ),
                               ),
                             ),
@@ -97,7 +93,7 @@ class originalTemplate extends StatelessWidget {
                                   fontFamily: 'Raleway',
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0,
-                                  color: Colors.white),
+                                  color: Colors.grey[850]),
                             ),
                           ],
                         ),
@@ -106,7 +102,7 @@ class originalTemplate extends StatelessWidget {
                           child: IconButton(
                             icon: Icon(
                               Icons.edit,
-                              color: Colors.teal,
+                              color: Colors.grey[600],
                             ),
                             onPressed: () {
                               // ProfilePage(index: index);

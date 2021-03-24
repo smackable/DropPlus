@@ -40,11 +40,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text("Profile",
-            style: TextStyle(
-                fontFamily: 'raleway',
-                fontSize: 25,
-                fontWeight: FontWeight.bold)),
+        title: Text("Profile"),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -217,7 +213,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                             number: Number.none,
                                             index: val['profile A']
                                                 ['tank Capacity'],
-                                            circleColor: Colors.redAccent,
+                                            circleColor: Colors.blue,
                                             counterStyle: TextStyle(
                                                 fontFamily: 'YanoneKaffeesatz',
                                                 fontWeight: FontWeight.bold,
@@ -314,7 +310,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Row(
             children: [
               Column(
-                children: <Widget>[
+                children: [
                   Text(
                     'Water used :',
                     style: TextStyle(
