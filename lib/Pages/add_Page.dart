@@ -77,6 +77,7 @@ class _AddPageState extends State<AddPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey[600],
         title: Text(
           "Add user",
           style: TextStyle(
@@ -99,6 +100,10 @@ class _AddPageState extends State<AddPage> {
                   height: 100,
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blueGrey[600], // background
+                    onPrimary: Colors.white, // foreground
+                  ),
                   child: Text(
                     "Submit",
                     style: TextStyle(fontSize: 20),

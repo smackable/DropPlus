@@ -17,6 +17,23 @@ class ProfilePage extends StatefulWidget {
 // Git check
 class _ProfilePageState extends State<ProfilePage> {
   final databaseReference = FirebaseDatabase.instance.reference();
+  var s1 = true;
+  void changeval(val) {
+    setState(() {
+      s1 = val;
+    });
+    if (val) {
+      databaseReference
+          .child("z2Ix9odfi5RyMWTpn6KvLUEhSy82")
+          .child("profile A")
+          .update({'motor': '0'});
+    } else {
+      databaseReference
+          .child("z2Ix9odfi5RyMWTpn6KvLUEhSy82")
+          .child("profile A")
+          .update({'motor': '1'});
+    }
+  }
   // double wtrfln;
   // double intank;
 
@@ -40,7 +57,12 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text("Profile"),
+        backgroundColor: Colors.blueGrey[600],
+        title: Text(
+          "Profile",
+          style: TextStyle(
+              fontFamily: 'raleway', fontSize: 25, fontWeight: FontWeight.bold),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -193,72 +215,129 @@ class _ProfilePageState extends State<ProfilePage> {
                           // return waterGauge(val['profile A']['tank Capacity'],
                           //     val['profile A']['Water flown']);
                           return Container(
-                            child: Column(
-                              children: [
-                                Row(
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 60.0),
+                                child: Column(
                                   children: [
-                                    Column(
+                                    Row(
                                       children: [
-                                        Text(
-                                          'Water in tank :',
-                                          style: TextStyle(
-                                              fontFamily: 'raleway',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 15),
+                                        Column(
+                                          children: [
+                                            Text(
+                                              'Water in tank : ( in l )',
+                                              style: TextStyle(
+                                                  fontFamily: 'raleway',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18),
+                                            ),
+                                            FlutterGauge(
+                                                //Guage 1
+                                                secondsMarker:
+                                                    SecondsMarker.none,
+                                                hand: Hand.short,
+                                                number: Number.none,
+                                                index: val['profile A']
+                                                    ['tank Capacity'],
+                                                circleColor:
+                                                    Colors.blueGrey[600],
+                                                counterStyle: TextStyle(
+                                                    fontFamily:
+                                                        'YanoneKaffeesatz',
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black,
+                                                    fontSize: 25),
+                                                counterAlign:
+                                                    CounterAlign.center,
+                                                isDecimal: false),
+                                          ],
                                         ),
-                                        FlutterGauge(
-                                            //Guage 1
-                                            secondsMarker: SecondsMarker.none,
-                                            hand: Hand.short,
-                                            number: Number.none,
-                                            index: val['profile A']
-                                                ['tank Capacity'],
-                                            circleColor: Colors.blue,
-                                            counterStyle: TextStyle(
-                                                fontFamily: 'YanoneKaffeesatz',
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black,
-                                                fontSize: 25),
-                                            counterAlign: CounterAlign.center,
-                                            isDecimal: false),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Text(
+                                              'Water used : ( in l )',
+                                              style: TextStyle(
+                                                  fontFamily: 'raleway',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18),
+                                            ),
+                                            FlutterGauge(
+                                                // Guage 2
+                                                secondsMarker:
+                                                    SecondsMarker.none,
+                                                hand: Hand.short,
+                                                number: Number.none,
+                                                index: val['profile A']
+                                                    ['Water flown'],
+                                                circleColor:
+                                                    Colors.blueGrey[600],
+                                                counterStyle: TextStyle(
+                                                    fontFamily:
+                                                        'YanoneKaffeesatz',
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black,
+                                                    fontSize: 25),
+                                                counterAlign:
+                                                    CounterAlign.center,
+                                                isDecimal: false),
+                                            Row(
+                                              children: [
+                                                Column(
+                                                  children: [
+                                                    ElevatedButton(
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          primary: Colors
+                                                                  .blueGrey[
+                                                              600], // background
+                                                          onPrimary: Colors
+                                                              .white, // foreground
+                                                        ),
+                                                        child: Text("Reset"),
+                                                        onPressed: () {}),
+                                                  ],
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 200.0),
+                                          child: Column(
+                                            children: [
+                                              Text(
+                                                "Motor : ",
+                                                style: TextStyle(
+                                                    fontFamily: 'raleway',
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Switch(
+                                                  value: s1,
+                                                  activeColor:
+                                                      Colors.blueGrey[600],
+                                                  activeTrackColor:
+                                                      Color(0xffF9AA33),
+                                                  inactiveThumbColor:
+                                                      Colors.blueGrey[600],
+                                                  inactiveTrackColor:
+                                                      Colors.blueGrey[100],
+                                                  onChanged: (val) {
+                                                    changeval(val);
+                                                  }),
+                                            ],
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Text(
-                                          'Water used :',
-                                          style: TextStyle(
-                                              fontFamily: 'raleway',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 15),
-                                        ),
-                                        FlutterGauge(
-                                            // Guage 2
-                                            secondsMarker: SecondsMarker.none,
-                                            hand: Hand.short,
-                                            number: Number.none,
-                                            index: val['profile A']
-                                                ['Water flown'],
-                                            circleColor: Colors.blue,
-                                            counterStyle: TextStyle(
-                                                fontFamily: 'YanoneKaffeesatz',
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black,
-                                                fontSize: 25),
-                                            counterAlign: CounterAlign.center,
-                                            isDecimal: false),
-                                        ElevatedButton(
-                                            child: Text("Reset"),
-                                            onPressed: () {})
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
+                              ),
                             ),
                           );
                         }
@@ -270,74 +349,6 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  waterGauge(intank_value, wtrfln_value) {
-    return Container(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Column(
-                children: [
-                  Text(
-                    'Water in tank :',
-                    style: TextStyle(
-                        fontFamily: 'raleway',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                  FlutterGauge(
-                      //Guage 1
-                      secondsMarker: SecondsMarker.none,
-                      hand: Hand.short,
-                      number: Number.none,
-                      index: intank_value,
-                      circleColor: Colors.blue,
-                      counterStyle: TextStyle(
-                          fontFamily: 'YanoneKaffeesatz',
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 25),
-                      counterAlign: CounterAlign.center,
-                      isDecimal: false),
-                ],
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Column(
-                children: [
-                  Text(
-                    'Water used :',
-                    style: TextStyle(
-                        fontFamily: 'raleway',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                  FlutterGauge(
-                      // Guage 2
-                      secondsMarker: SecondsMarker.none,
-                      hand: Hand.short,
-                      number: Number.none,
-                      index: wtrfln_value,
-                      circleColor: Colors.blue,
-                      counterStyle: TextStyle(
-                          fontFamily: 'YanoneKaffeesatz',
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 25),
-                      counterAlign: CounterAlign.center,
-                      isDecimal: false),
-                  ElevatedButton(child: Text("Reset"), onPressed: () {})
-                ],
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }
