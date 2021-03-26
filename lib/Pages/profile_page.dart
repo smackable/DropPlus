@@ -3,6 +3,7 @@ import 'package:flutter_gauge/flutter_gauge.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:prjct/Pages/list.dart';
 import 'user_info_model.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class ProfilePage extends StatefulWidget {
   var index = 0;
@@ -231,25 +232,45 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 18),
                                             ),
-                                            FlutterGauge(
-                                                //Guage 1
-                                                secondsMarker:
-                                                    SecondsMarker.none,
-                                                hand: Hand.short,
-                                                number: Number.none,
-                                                index: val['profile A']
-                                                    ['tank Capacity'],
-                                                circleColor:
-                                                    Colors.blueGrey[600],
-                                                counterStyle: TextStyle(
-                                                    fontFamily:
-                                                        'YanoneKaffeesatz',
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black,
-                                                    fontSize: 25),
-                                                counterAlign:
-                                                    CounterAlign.center,
-                                                isDecimal: false),
+                                            RadialAxis(
+ showLabels: false,
+ showTicks: false,
+ startAngle: 180,
+ endAngle: 0,
+ radiusFactor: 0.7,
+ canScaleToFit: true,
+ axisLineStyle: AxisLineStyle(
+  thickness: 0.1,
+  color: const Color.fromARGB(30, 0, 169, 181),
+  thicknessUnit: GaugeSizeUnit.factor,
+  cornerStyle: CornerStyle.startCurve,
+ ),
+ pointers: <GaugePointer>[
+  RangePointer(
+   value: ,
+   width: 0.1,
+   sizeUnit: GaugeSizeUnit.factor,
+   cornerStyle: CornerStyle.bothCurve)
+],
+                                            // FlutterGauge(
+                                            //     //Guage 1
+                                            //     secondsMarker:
+                                            //         SecondsMarker.none,
+                                            //     hand: Hand.short,
+                                            //     number: Number.none,
+                                            //     index: val['profile A']
+                                            //         ['tank Capacity'],
+                                            //     circleColor:
+                                            //         Colors.blueGrey[600],
+                                            //     counterStyle: TextStyle(
+                                            //         fontFamily:
+                                            //             'YanoneKaffeesatz',
+                                            //         fontWeight: FontWeight.bold,
+                                            //         color: Colors.black,
+                                            //         fontSize: 25),
+                                            //     counterAlign:
+                                            //         CounterAlign.center,
+                                            //     isDecimal: false),
                                           ],
                                         ),
                                       ],
