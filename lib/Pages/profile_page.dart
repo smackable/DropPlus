@@ -232,26 +232,53 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 18),
                                             ),
-                                            RadialAxis(
- showLabels: false,
- showTicks: false,
- startAngle: 180,
- endAngle: 0,
- radiusFactor: 0.7,
- canScaleToFit: true,
- axisLineStyle: AxisLineStyle(
-  thickness: 0.1,
-  color: const Color.fromARGB(30, 0, 169, 181),
-  thicknessUnit: GaugeSizeUnit.factor,
-  cornerStyle: CornerStyle.startCurve,
- ),
- pointers: <GaugePointer>[
-  RangePointer(
-   value: ,
-   width: 0.1,
-   sizeUnit: GaugeSizeUnit.factor,
-   cornerStyle: CornerStyle.bothCurve)
-],
+                                            SizedBox(
+                                              height: 200,
+                                              width: 200,
+                                              child: SfRadialGauge(axes: <
+                                                  RadialAxis>[
+                                                RadialAxis(
+                                                    minimum: 0,
+                                                    maximum: 100,
+                                                    ranges: <GaugeRange>[
+                                                      GaugeRange(
+                                                          startValue: 0,
+                                                          endValue: 50,
+                                                          color: Colors
+                                                              .blueGrey[600]),
+                                                      GaugeRange(
+                                                          startValue: 50,
+                                                          endValue: 100,
+                                                          color: Color(
+                                                              0xffF9AA33)),
+                                                      GaugeRange(
+                                                          startValue: 100,
+                                                          endValue: 150,
+                                                          color: Colors.red)
+                                                    ],
+                                                    pointers: <GaugePointer>[
+                                                      NeedlePointer(
+                                                        value: val['profile A']
+                                                            ['tank Capacity'],
+                                                      )
+                                                    ],
+                                                    annotations: <
+                                                        GaugeAnnotation>[
+                                                      GaugeAnnotation(
+                                                          widget: Container(
+                                                              child: Text('',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          25,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold))),
+                                                          angle: 90,
+                                                          positionFactor: 0.5)
+                                                    ])
+                                              ]),
+                                            )
+
                                             // FlutterGauge(
                                             //     //Guage 1
                                             //     secondsMarker:
@@ -286,25 +313,71 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 18),
                                             ),
-                                            FlutterGauge(
-                                                // Guage 2
-                                                secondsMarker:
-                                                    SecondsMarker.none,
-                                                hand: Hand.short,
-                                                number: Number.none,
-                                                index: val['profile A']
-                                                    ['Water flown'],
-                                                circleColor:
-                                                    Colors.blueGrey[600],
-                                                counterStyle: TextStyle(
-                                                    fontFamily:
-                                                        'YanoneKaffeesatz',
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black,
-                                                    fontSize: 25),
-                                                counterAlign:
-                                                    CounterAlign.center,
-                                                isDecimal: false),
+                                            SizedBox(
+                                              height: 200,
+                                              width: 200,
+                                              child: SfRadialGauge(axes: <
+                                                  RadialAxis>[
+                                                RadialAxis(
+                                                    minimum: 0,
+                                                    maximum: 100,
+                                                    ranges: <GaugeRange>[
+                                                      GaugeRange(
+                                                          startValue: 0,
+                                                          endValue: 50,
+                                                          color: Colors
+                                                              .blueGrey[600]),
+                                                      GaugeRange(
+                                                          startValue: 50,
+                                                          endValue: 100,
+                                                          color: Color(
+                                                              0xffF9AA33)),
+                                                      GaugeRange(
+                                                          startValue: 100,
+                                                          endValue: 150,
+                                                          color: Colors.red)
+                                                    ],
+                                                    pointers: <GaugePointer>[
+                                                      NeedlePointer(
+                                                        value: val['profile A']
+                                                            ['Water flown'],
+                                                      )
+                                                    ],
+                                                    annotations: <
+                                                        GaugeAnnotation>[
+                                                      GaugeAnnotation(
+                                                          widget: Container(
+                                                              child: Text('',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          25,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold))),
+                                                          angle: 90,
+                                                          positionFactor: 0.5)
+                                                    ])
+                                              ]),
+                                            ),
+                                            // FlutterGauge(
+                                            //     // Guage 2
+                                            //     secondsMarker:
+                                            //         SecondsMarker.none,
+                                            //     hand: Hand.short,
+                                            //     number: Number.none,
+                                            //     index: val['profile A']
+                                            //         ['Water flown'],
+                                            //     circleColor:
+                                            //         Colors.blueGrey[600],
+                                            //     counterStyle: TextStyle(
+                                            //         fontFamily:
+                                            //             'YanoneKaffeesatz',
+                                            //         fontWeight: FontWeight.bold,
+                                            //         color: Colors.black,
+                                            //         fontSize: 25),
+                                            //     counterAlign:
+                                            //         CounterAlign.center,
+                                            //     isDecimal: false),
                                             Row(
                                               children: [
                                                 Column(
